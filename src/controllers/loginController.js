@@ -1,7 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('../config');
 const { loginUserDb } = require('../models/loginModel');
-const { passwordsMatch } = require('../utils/helpers');
+const { passwordsMatch, signingJwt } = require('../utils/helpers');
 
 async function loginUser(req, res) {
   const emailInput = req.body.email;
@@ -16,7 +14,9 @@ async function loginUser(req, res) {
     if (!passwordsMatch(passwordInput, foundUser.password)) throw new Error(402);
 
     // signing jwt
-    const token = jwt.sign({ userId: foundUser.id }, jwtSecret, { expiresIn: '1h' });
+    const payload = { userId: foundUser.id };
+    const token = signingJwt(payload);
+    console.log('token', token);
 
     return res.json({ success: true, message: 'Login success.', token });
   } catch (err) {
