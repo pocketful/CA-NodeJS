@@ -1,6 +1,6 @@
 const express = require('express');
-const getGroups = require('../controllers/groupsController');
 const validateToken = require('../middlewares/validateToken');
+const getGroups = require('../controllers/groupsController');
 
 const groupsRoute = express.Router();
 
