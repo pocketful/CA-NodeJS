@@ -1,20 +1,6 @@
-.page-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-}
-
 .container {
-  width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    margin: initial;
-    width: initial;
-  }
 }
