@@ -7,8 +7,9 @@ Content-Type: application/json
 
 {
   "fullname": "Hermione Granger",
-  "email": "hermionegranger@email.com",
-  "password": "secret123"
+  "email": "hermionegranger3@email.com",
+  "password": "secret123",
+  "passwordConfirm": "secret123"
 }
 
 
@@ -18,8 +19,7 @@ Content-Type: application/json
 
 {
   "email": "hermionegranger@email.com",
-  "password": "secret123",
-  "passwordConfirm": "secret123"
+  "password": "secret123"
 }
 
 
