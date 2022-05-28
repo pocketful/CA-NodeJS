@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <script src="js/login.js" type="module" defer></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -21,36 +23,72 @@
             <h1 class="intro__title-small">Split Bill</h1>
         </section>
     </header>
-    <main class="container groups">
+    <main class="container">
 
-        <h3 class="groups__title">Select Your Group</h3>
+        <section class="groups">
+            <h3 class="groups__title">Select Your Group</h3>
+            <div class="groups__cards">
+                <!-- Generate cards -->
+                <article class="grcard">
+                    <p class="grcard__id">ID: <span class="grcard__id-span">1</span></p>
+                    <p class="grcard__name">Trip To Spain</p>
+                </article>
+                <article class="grcard">
+                    <p class="grcard__id">ID: <span class="grcard__id-span">2</span></p>
+                    <p class="grcard__name">Trip To SpainSpain</p>
+                </article>
+                <article class="grcard">
+                    <p class="grcard__id">ID: <span class="grcard__id-span">3</span></p>
+                    <p class="grcard__name">Trip To SpainSpa dsfdsf in</p>
+                </article>
+                <article class="grcard">
+                    <p class="grcard__id">ID: <span class="grcard__id-span">4</span></p>
+                    <p class="grcard__name">Trip To Spadsf ds dsf sdf dsf dsf dsfdsfdffdin</p>
+                </article>
+                <article class="grcard">
+                    <p class="grcard__id">ID: <span class="grcard__id-span">5</span></p>
+                    <p class="grcard__name">Trip To SpainSpain</p>
+                </article>
+            </div>
+        </section>
 
-        <section class="groups__cards">
-            <!-- Generate cards -->
-            <article class="grcard">
-                <p class="grcard__id">ID: <span class="grcard__id-span">1</span></p>
-                <p class="grcard__name">Trip To Spain</p>
-            </article>
-            <article class="grcard">
-                <p class="grcard__id">ID: <span class="grcard__id-span">2</span></p>
-                <p class="grcard__name">Trip To SpainSpain</p>
-            </article>
-            <article class="grcard">
-                <p class="grcard__id">ID: <span class="grcard__id-span">3</span></p>
-                <p class="grcard__name">Trip To SpainSpa dsfdsf in</p>
-            </article>
-            <article class="grcard">
-                <p class="grcard__id">ID: <span class="grcard__id-span">4</span></p>
-                <p class="grcard__name">Trip To Spadsf ds dsf sdf dsf  dsf  dsfdsfdffdin</p>
-            </article>
-            <article class="grcard">
-                <p class="grcard__id">ID: <span class="grcard__id-span">5</span></p>
-                <p class="grcard__name">Trip To SpainSpain</p>
-            </article>
+        <section class="forms-section">
+
+            <div class="form__addgr">
+                <p class="formadd__title">Add group to your account</p>
+                <form id="formAddGroup">
+                    <div class="addgroup__id">
+                        <label for="addgroupSelect">Group:</label>
+                        <select id="addgroupSelect">
+                            <option value="1">Trip To Spain</option>
+                            <option value="2">Trip To Alps</option>
+                            <option value="3">Trip To Italy</option>
+                            <option value="4">Trip To America</option>
+                            <option value="5">Trip To Park</option>
+                        </select>
+                    </div>
+                    <button class="btn" type="submit">Add</button>
+                </form>
+            </div>
+
+            <div class="form__creategr">
+                <p class="formadd__title">Create new group for a trip</p>
+                <form id="formCreateGroup">
+                    <div class="create__group">
+                        <label for="grname">New group name:</label>
+                        <input type="text" id="grname" name="grname" placeholder="Enter new group name" value="Trip To LA">
+                    </div>
+                    <span class="grname-err err"></span>
+                    <div class="err-common err-common-add"></div>
+                    <button class="btn" type="submit">Create</button>
+                </form>
+            </div>
+
         </section>
     </main>
     <footer>
         <p>Copyright &copy;2022 Split Bill</p>
     </footer>
 </body>
+
 </html>
