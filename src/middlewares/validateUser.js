@@ -6,8 +6,10 @@ async function validateUser(req, res, next) {
       .trim()
       // pattern: a string of alphabetic characters separated by whitespace, case-insensitive
       .pattern(/^[A-Z]+ [A-Z]+$/i)
+      .min(3)
       .max(255),
-    email: Joi.string().email().trim().max(255)
+    email: Joi.string().email().trim().min(3)
+      .max(255)
       .lowercase()
       .required(),
     password: Joi.string().min(6).max(255).required(),

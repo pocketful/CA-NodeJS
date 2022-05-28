@@ -20,11 +20,9 @@ export function clearErrors() {
 
 export function handleErrors(errors = errorsFeArr) {
   console.log('Errors: ', errors);
-
   if (typeof errors === 'string') {
     errCommonEl.textContent = errors;
   }
-
   if (Array.isArray(errors)) {
     errors.forEach((errObj) => {
       const errEl = document.getElementById(errObj.field);
@@ -67,11 +65,21 @@ function checkMaxLength(value, maxLength, field) {
 
 function checkEmail(value, field) {
   if (!value.includes('@')) {
-    addErrToErrsArr(`${field} must be a valid email`, field);
+    addErrToErrsArr('Please enter a valid email address', field);
     return true;
   }
   if (!value.split('@')[1].includes('.')) {
-    addErrToErrsArr(`${field} must be a valid email`, field);
+    addErrToErrsArr('Please enter a valid email address', field);
+    return true;
+  }
+  return false;
+}
+
+function checkFullname(value, field) {
+  // regex: a string of alphabetic characters separated by whitespace, case-insensitive
+  const regexName = /^[A-Z]+ [A-Z]+$/i;
+  if (!regexName.test(value)) {
+    addErrToErrsArr('Please enter a valid full name (Name Surname)', field);
     return true;
   }
   return false;
@@ -93,44 +101,28 @@ export function checkInput(valueToCheck, field, rulesArr) {
       if (checkRequired(valueToCheck, field)) {
         return;
       }
-      // if (valueToCheck === '') {
-      //   addErrToErrsArr(`${field} is not allowed to be empty`, field);
-      //   return;
-      // }
     }
     if (rule.split('-')[0] === 'minLength') {
       const min = rule.split('-')[1];
       if (checkMinLength(valueToCheck, min, field)) {
         return;
       }
-      // if (valueToCheck.length < length) {
-      //   addErrToErrsArr(`${field} length must be at least ${length} characters long`, field);
-      //   return;
-      // }
     }
     if (rule.split('-')[0] === 'maxLength') {
       const max = rule.split('-')[1];
       if (checkMaxLength(valueToCheck, max, field)) {
         return;
       }
-      // if (valueToCheck.length > length) {
-      // eslint-disable-next-line max-len
-      //   addErrToErrsArr(`${field} length must be less than or equal to ${length} characters long`, field);
-      //   return;
-      // }
     }
     if (rule === 'email') {
       if (checkEmail(valueToCheck, field)) {
         return;
       }
-      // if (!valueToCheck.includes('@')) {
-      //   addErrToErrsArr(`${field} must be a valid email`, field);
-      //   return;
-      // }
-      // if (!valueToCheck.split('@')[1].includes('.')) {
-      //   addErrToErrsArr(`${field} must be a valid email`, field);
-      //   return;
-      // }
+    }
+    if (rule === 'fullname') {
+      if (checkFullname(valueToCheck, field)) {
+        return;
+      }
     }
     if (rule.split('-')[0] === 'ref') {
       const fieldRef = rule.split('-')[1];
@@ -138,11 +130,6 @@ export function checkInput(valueToCheck, field, rulesArr) {
       if (checkRef(valueToCheck, field, valueRef, fieldRef)) {
         return;
       }
-      // if (valueToCheck !== valueRef) {
-      //   addErrToErrsArr("passwords does't match", fieldRef);
-      //   addErrToErrsArr("passwords does't match", field);
-      //   return;
-      // }
     }
   }
 }
