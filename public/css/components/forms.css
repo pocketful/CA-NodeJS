@@ -44,8 +44,19 @@ form input:focus {
   /* background-color: var(--skyblue); */
 }
 
-.err {
+.err,
+.err-common {
+  font-size: 0.9rem;
   color: var(--pink);
+}
+
+.err-input {
+  border: 2px solid var(--pink);
+}
+
+.err-common {
+  margin-top: 1em;
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
