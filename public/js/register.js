@@ -1,9 +1,8 @@
 import { BASE_URL } from './modules/fetch.js';
-import {
-  checkInput, clearErrors, errorsFeArr, handleErrors,
-} from './modules/validation.js';
+import { checkInput, clearErrors, errorsFeArr, handleErrors } from './modules/validation.js';
 
 const { formRegister } = document.forms;
+const inputEls = document.querySelectorAll('input');
 
 async function registerUser(regInputData) {
   console.log('regInputData: ', regInputData);
@@ -32,8 +31,18 @@ async function registerUser(regInputData) {
   }
 }
 
-formRegister.addEventListener('submit', (event) => {
-  event.preventDefault();
+// validation rules for inputs
+function getRules() {
+  const rules = {
+    fullname: ['required', 'minLength-3', 'fullname', 'maxLength-255'],
+    email: ['required', 'minLength-3', 'email'],
+    password: ['required', 'minLength-3', 'maxLength-10'],
+    passwordConfirm: [`ref-password-${formRegister.password.value}`],
+  };
+  return rules;
+}
+
+function fullnameFixed() {
   const fullname = formRegister.fullname.value
     .trim()
     .toLowerCase()
@@ -44,29 +53,43 @@ formRegister.addEventListener('submit', (event) => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
   // console.log('fullname: ', fullname);
+  return fullname;
+}
+
+formRegister.addEventListener('submit', (event) => {
+  const rules = getRules();
+  event.preventDefault();
   const formRegData = {
-    fullname,
+    fullname: fullnameFixed(),
     email: formRegister.email.value.trim(),
     password: formRegister.password.value.trim(),
     passwordConfirm: formRegister.passwordConfirm.value.trim(),
   };
-  // console.log('formRegData: ', formRegData);
+  console.log('formRegData: ', formRegData);
   clearErrors();
-  checkInput(formRegData.fullname, 'fullname', [
-    'required',
-    'minLength-3',
-    'fullname',
-    'maxLength-255',
-  ]);
-  checkInput(formRegData.email, 'email', ['required', 'minLength-3', 'email', 'maxLength-255']);
-  checkInput(formRegData.password, 'password', ['required', 'minLength-6', 'maxLength-255']);
-  checkInput(formRegData.passwordConfirm, 'passwordConfirm', [
-    `ref-password-${formRegData.password}`,
-  ]);
+
+  checkInput(formRegData.fullname, 'fullname', rules.fullname);
+  checkInput(formRegData.email, 'email', rules.email);
+  checkInput(formRegData.password, 'password', rules.password);
+  checkInput(formRegData.passwordConfirm, 'passwordConfirm', rules.passwordConfirm);
   // if there are errors in FE
   if (errorsFeArr.length) {
     handleErrors();
     return;
   }
   registerUser(formRegData);
+});
+
+// validate inputs while typing
+inputEls.forEach((inputEl) => {
+  inputEl.addEventListener('blur', (event) => {
+    const rules = getRules();
+    // clearErrors();
+    const el = event.currentTarget;
+    checkInput(el.value, el.name, rules[el.name]);
+    handleErrors();
+  });
+  inputEl.addEventListener('input', () => {
+    clearErrors();
+  });
 });
