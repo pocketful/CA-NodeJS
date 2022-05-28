@@ -1,0 +1,65 @@
+/* header links ------------------------------------------------ */
+.nav-link {
+  color: var(--skyblue);
+}
+.nav-link:hover {
+  color: var(--skyblue2);
+}
+.nav-link:active {
+  color: var(--skyblue3);
+}
+
+/* header link active ------------------------------------------ */
+.nav-link.active {
+  color: var(--yellow);
+}
+.nav-link.active:hover {
+  color: var(--yellow2);
+}
+.nav-link.active:active {
+  color: var(--yellow3);
+}
+
+/* link -------------------------------------------------------- */
+.link {
+  color: var(--light);
+  font-size: 0.9rem;
+  text-align: center;
+}
+.link:hover {
+  color: var(--grey);
+}
+.link:active {
+  color: var(--grey2);
+}
+
+/* button ------------------------------------------------------ */
+.btn {
+  display: block;
+  color: var(--dark);
+  background-color: var(--yellow2);
+  box-shadow: 1px 1px 2px 1px var(--shadow);
+  /* box-shadow: 1px 1px 2px var(--shadow); */
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  margin-top: 1.5em;
+  margin-bottom: 1.2em;
+}
+.btn:hover {
+  background-color: var(--yellow3);
+  color: var(--light);
+}
+.btn:active {
+  background-color: var(--yellow2);
+}
+
+/* media queries ----------------------------------------------- */
+@media screen and (max-width: 600px) {
+  .btn {
+    text-align: center;
+  }
+}

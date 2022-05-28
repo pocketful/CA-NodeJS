@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Split Bill</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/register.js" type="module" defer></script>
+</head>
+
+<body>
+    <div class="page-container">
+
+        <header>
+            <nav>
+                <a class="nav-link active" href="./register.html">Register</a>
+                <a class="nav-link" href="./login.html">Login</a>
+                <a class="nav-link" href="./groups.html">Groups</a>
+                <a class="nav-link" href="./bills.html">Bills</a>
+            </nav>
+            <section class="intro-section">
+                <img class="intro__logo" src="assets/logo.png" alt="logo" />
+                <h1 class="intro__title">Split Bill</h1>
+                <p class="intro__subtitle">Best in market</p>
+            </section>
+        </header>
+
+        <main class="container">
+
+            <section class="form-section">
+                <h2 class="form__title">Register</h2>
+
+                <form id="formRegister">
+                    <div class="register__fullname">
+                        <label for="email">Full Name<span class="req-star"> *</span></label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Name Surname"
+                            value="Hermione Granger">
+                        <span class="email-err err"></span>
+                    </div>
+
+                    <div class="register__email">
+                        <label for="email">Email<span class="req-star"> *</span></label>
+                        <input type="text" id="email" name="email" placeholder="example@domain.com"
+                            value="hermionegranger@email.com">
+                        <span class="email-err err"></span>
+                    </div>
+
+                    <div class="register__password">
+                        <label for="password">Password<span class="req-star"> *</span></label>
+                        <input type="password" id="password" name="password"
+                            placeholder="Must have at least 6 characters" value="secret123">
+                        <span class="password-err err"></span>
+                    </div>
+
+                    <div class="register__password">
+                        <label for="passwordConfirm">Repeat password<span class="req-star"> *</span></label>
+                        <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder=""
+                            value="secret123">
+                        <span class="passwordConfirm-err err"></span>
+                    </div>
+
+                    <button class="btn" type="submit">Register</button>
+
+                    <a class="link" href="./login.html">Or perhaps, just login?</a>
+                </form>
+
+                <div class="err-common" id="feedbackReg"></div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Copyright &copy;2022 Split Bill</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>
