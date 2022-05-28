@@ -3,7 +3,7 @@ form {
   flex-direction: column;
 }
 
-.form-section {
+.form-container {
   background-color: var(--dark2);
   box-shadow: 2px 2px 8px var(--shadow);
   border-radius: 4px;
@@ -29,7 +29,8 @@ form label {
   padding-bottom: 0.5em;
 }
 
-form input, select {
+form input,
+select {
   padding: 8px;
   border: none;
   border-radius: 4px;
@@ -44,6 +45,7 @@ form input:focus {
   /* background-color: var(--skyblue); */
 }
 
+/* errors ----------------------------------------------------- */
 .err,
 .err-common {
   font-size: 0.9rem;
@@ -59,8 +61,37 @@ form input:focus {
   text-align: center;
 }
 
+/* groups, bills forms --------------------------------------------------- */
+.forms-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.form__add,
+.form__create {
+  flex: 1 0 40%;
+}
+
+.formadd__title {
+  color: var(--yellow);
+  text-align: center;
+}
+
+.btn-add,
+.err-common-add {
+  margin-top: 0;
+}
+
+/* media queries ----------------------------------------------- */
 @media screen and (max-width: 600px) {
   .form-section {
     padding: 1.5rem;
+  }
+  /* groups, bills forms */
+  .form__add,
+  .form__create {
+    flex: 1 0 100%;
   }
 }

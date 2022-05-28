@@ -49,31 +49,6 @@
   font-weight: 500;
 }
 
-/* forms --------------------------------------------------- */
-.forms-section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.form__addgr, .form__creategr {
-  flex: 1 0 40%;
-}
-
-.formadd__title {
-  color: var(--yellow);
-  text-align: center;
-}
-
-.btn-add {
-  margin-top: 0;
-}
-
-.err-common-add {
-  margin-top: 0;
-}
-
 /* media queries --------------------------------------------------- */
 @media screen and (max-width: 800px) {
   .groups__cards {
@@ -88,8 +63,5 @@
 @media screen and (max-width: 600px) {
   .groups__cards {
     grid-template-columns: 1fr;
-  }
-  .form__addgr, .form__creategr {
-    flex: 1 0 100%;
   }
 }

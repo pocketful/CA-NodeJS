@@ -39,7 +39,6 @@
   color: var(--dark);
   background-color: var(--yellow2);
   box-shadow: 1px 1px 2px 1px var(--shadow);
-  /* box-shadow: 1px 1px 2px var(--shadow); */
   cursor: pointer;
   padding: 12px 24px;
   border-radius: 6px;
