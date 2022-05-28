@@ -7,6 +7,7 @@ export function clearFeErrsArr() {
 
 const errSpanEls = document.querySelectorAll('.err');
 const errCommonEl = document.querySelector('.err-common');
+const inputEls = document.querySelectorAll('input');
 
 export function clearErrors() {
   clearFeErrsArr();
@@ -65,11 +66,11 @@ function checkMaxLength(value, maxLength, field) {
 
 function checkEmail(value, field) {
   if (!value.includes('@')) {
-    addErrToErrsArr('Please enter a valid email address', field);
+    addErrToErrsArr('please enter a valid email address', field);
     return true;
   }
   if (!value.split('@')[1].includes('.')) {
-    addErrToErrsArr('Please enter a valid email address', field);
+    addErrToErrsArr('please enter a valid email address', field);
     return true;
   }
   return false;
@@ -79,7 +80,7 @@ function checkFullname(value, field) {
   // regex: a string of alphabetic characters separated by whitespace, case-insensitive
   const regexName = /^[A-Z]+ [A-Z]+$/i;
   if (!regexName.test(value)) {
-    addErrToErrsArr('Please enter a valid full name (Name Surname)', field);
+    addErrToErrsArr('please enter a valid full name (Name Surname)', field);
     return true;
   }
   return false;
@@ -132,4 +133,18 @@ export function checkInput(valueToCheck, field, rulesArr) {
       }
     }
   }
+}
+
+// validate inputs while typing
+export function handleErrorsWhileTyping(rules) {
+  inputEls.forEach((inputEl) => {
+    inputEl.addEventListener('blur', (event) => {
+      const el = event.currentTarget;
+      checkInput(el.value, el.name, rules[el.name]);
+      handleErrors();
+    });
+    inputEl.addEventListener('input', () => {
+      clearErrors();
+    });
+  });
 }

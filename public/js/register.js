@@ -1,8 +1,9 @@
 import { BASE_URL } from './modules/fetch.js';
-import { checkInput, clearErrors, errorsFeArr, handleErrors } from './modules/validation.js';
+import {
+  checkInput, clearErrors, errorsFeArr, handleErrors, handleErrorsWhileTyping,
+} from './modules/validation.js';
 
 const { formRegister } = document.forms;
-const inputEls = document.querySelectorAll('input');
 
 async function registerUser(regInputData) {
   console.log('regInputData: ', regInputData);
@@ -34,9 +35,9 @@ async function registerUser(regInputData) {
 // validation rules for inputs
 function getRules() {
   const rules = {
-    fullname: ['required', 'minLength-3', 'fullname', 'maxLength-255'],
-    email: ['required', 'minLength-3', 'email'],
-    password: ['required', 'minLength-3', 'maxLength-10'],
+    fullname: ['required', 'minLength-5', 'fullname', 'maxLength-255'],
+    email: ['required', 'minLength-5', 'email', 'maxLength-255'],
+    password: ['required', 'minLength-6', 'maxLength-255'],
     passwordConfirm: [`ref-password-${formRegister.password.value}`],
   };
   return rules;
@@ -68,10 +69,19 @@ formRegister.addEventListener('submit', (event) => {
   console.log('formRegData: ', formRegData);
   clearErrors();
 
-  checkInput(formRegData.fullname, 'fullname', rules.fullname);
-  checkInput(formRegData.email, 'email', rules.email);
-  checkInput(formRegData.password, 'password', rules.password);
-  checkInput(formRegData.passwordConfirm, 'passwordConfirm', rules.passwordConfirm);
+  // validate all inputs after form submit
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key in formRegData) {
+    if (key) {
+      // checkInput(valueToCheck, field, rulesArr)
+      checkInput(formRegData[key], key, rules[key]);
+    }
+  }
+  // checkInput(formRegData.fullname, 'fullname', rules.fullname);
+  // checkInput(formRegData.email, 'email', rules.email);
+  // checkInput(formRegData.password, 'password', rules.password);
+  // checkInput(formRegData.passwordConfirm, 'passwordConfirm', rules.passwordConfirm);
+
   // if there are errors in FE
   if (errorsFeArr.length) {
     handleErrors();
@@ -81,15 +91,4 @@ formRegister.addEventListener('submit', (event) => {
 });
 
 // validate inputs while typing
-inputEls.forEach((inputEl) => {
-  inputEl.addEventListener('blur', (event) => {
-    const rules = getRules();
-    // clearErrors();
-    const el = event.currentTarget;
-    checkInput(el.value, el.name, rules[el.name]);
-    handleErrors();
-  });
-  inputEl.addEventListener('input', () => {
-    clearErrors();
-  });
-});
+handleErrorsWhileTyping(getRules());
