@@ -1,0 +1,13 @@
+.bills__title {
+    text-align: center;
+    font-weight: 400;
+    color: var(--yellow);
+    margin-bottom: 0.8em;
+}
+
+.bills__subtitle {
+    text-align: center;
+    font-weight: 400;
+    color: var(--pink);
+    margin-bottom: 1.5em;
+}

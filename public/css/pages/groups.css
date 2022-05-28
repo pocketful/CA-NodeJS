@@ -55,7 +55,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px;
-  /* justify-content: space-between; */
 }
 
 .form__addgr, .form__creategr {
@@ -64,6 +63,7 @@
 
 .formadd__title {
   color: var(--yellow);
+  text-align: center;
 }
 
 .btn-add {
@@ -91,8 +91,5 @@
   }
   .form__addgr, .form__creategr {
     flex: 1 0 100%;
-  }
-  .formadd__title {
-    text-align: center;
   }
 }
