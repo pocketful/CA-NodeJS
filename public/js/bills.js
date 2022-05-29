@@ -13,7 +13,6 @@ const form = document.forms[0];
 
 // bills only for logged in users
 const token = localStorage.getItem('userToken');
-console.log('token: ', token);
 
 if (!token) {
   // if not logged in redirect to login, forbid back button
@@ -44,7 +43,6 @@ const groupId = getQueryParam('groupId');
 async function getBills(userToken) {
   try {
     const billsArr = await getFetch(`bills/${groupId}`, userToken);
-    console.log('billsArr ===', billsArr);
     renderBills(billsArr, outputEl);
   } catch (err) {
     console.log('err in getBills:', err);
@@ -55,7 +53,6 @@ getBills(token);
 /* post ----------------------------------------------- */
 
 async function postBill(inputData) {
-  console.log('inputData: ', inputData);
   const formData = {
     groupId,
     amount: inputData.amount,
@@ -69,18 +66,12 @@ async function postBill(inputData) {
       },
       body: JSON.stringify(formData),
     });
-    // console.log('response: ', resp);
     const data = await resp.json();
-    console.log('data: ', data);
     if (data.success) {
       form.reset();
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-      console.log('New bill successfully created.');
       handleErrors(data.message);
+      setTimeout(() => { window.location.reload(); }, 2000);
     } else {
-      console.log('Failed to create new bill.');
       handleErrors(data.message);
     }
   } catch (err) {
@@ -104,9 +95,7 @@ form.addEventListener('submit', (event) => {
     amount: form.amount.value.trim(),
     description: form.description.value.trim(),
   };
-  console.log('formData: ', formData);
   clearErrors();
-
   // validate all inputs after form submit
   // eslint-disable-next-line no-restricted-syntax
   for (const key in formData) {

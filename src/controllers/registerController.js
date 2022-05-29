@@ -2,12 +2,10 @@ const { registerUserDb } = require('../models/registerModel');
 const { hashPassword } = require('../utils/helpers');
 
 async function registerUser(req, res) {
-  console.log('req.body: ', req.body);
   const { fullname, email, password } = req.body;
   try {
     const hashedPass = hashPassword(password);
     const insertResult = await registerUserDb(fullname, email, hashedPass);
-    console.log('insertResult:', insertResult);
     if (insertResult.affectedRows === 1) {
       return res.status(201).json({ success: true, message: 'New user successfully created.' });
     }

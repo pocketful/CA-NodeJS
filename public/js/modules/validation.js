@@ -20,7 +20,6 @@ export function clearErrors() {
 }
 
 export function handleErrors(errors = errorsFeArr) {
-  console.log('Errors: ', errors);
   if (typeof errors === 'string') {
     errCommonEl.textContent = errors;
   }

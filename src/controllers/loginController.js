@@ -7,17 +7,12 @@ async function loginUser(req, res) {
   try {
     // if user with this email exists
     const foundUser = await loginUserDb(emailInput);
-    console.log('user with this email: ', foundUser);
     if (!foundUser) throw new Error(400);
-
     // if passwords match
     if (!passwordsMatch(passwordInput, foundUser.password)) throw new Error(402);
-
     // signing jwt
     const payload = { userId: foundUser.id };
     const token = signingJwt(payload);
-    console.log('token', token);
-
     return res.json({ success: true, message: 'Login success.', token });
   } catch (err) {
     console.log('error in login controller:', err);

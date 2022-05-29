@@ -9,12 +9,12 @@ import {
 } from './modules/validation.js';
 
 const formCreateGr = document.getElementById('formCreateGroup');
+const formAddGr = document.getElementById('formAddGroup');
 const selectEl = document.getElementById('addgroupSelect');
 const outputEl = document.querySelector('.groups__cards');
 
 // groups only for logged in users
 const token = localStorage.getItem('userToken');
-console.log('token: ', token);
 
 if (!token) {
   // if not logged in redirect to login, forbid back button
@@ -43,7 +43,6 @@ function renderGroups(arr, output) {
 async function getMyGroups(userToken) {
   try {
     const myGroupsArr = await getFetch('accounts', userToken);
-    console.log('groupsArr ===', myGroupsArr);
     renderGroups(myGroupsArr, outputEl);
   } catch (err) {
     console.log('err in getGroups:', err);
@@ -51,22 +50,16 @@ async function getMyGroups(userToken) {
 }
 getMyGroups(token);
 
-/* create group ----------------------------------------------- */
+/* create group ------------------------------------------------------------- */
 
 async function postGroup(inputData) {
-  console.log('inputData: ', inputData);
   try {
     const data = await postFetch('groups', token, inputData);
-    console.log('data: ', data);
     if (data.success) {
       formCreateGr.reset();
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-      console.log('New group successfully created.');
       handleErrors(data.message);
+      setTimeout(() => { window.location.reload(); }, 2000);
     } else {
-      console.log('Failed to create new group.');
       handleErrors(data.message);
     }
   } catch (err) {
@@ -89,7 +82,6 @@ formCreateGr.addEventListener('submit', (event) => {
   const nameVal = formCreateGr.name.value.trim().toLowerCase();
   const name = nameVal.charAt(0).toUpperCase() + nameVal.slice(1);
   const formData = { name };
-  console.log('formData: ', formData);
   clearErrors();
   // validate input after form submit (valueToCheck, field, rulesArr)
   checkInput(formData.name, 'name', rules.name);
@@ -104,7 +96,7 @@ formCreateGr.addEventListener('submit', (event) => {
 // validate inputs while typing
 handleErrorsWhileTyping(getRules());
 
-// /* add group to your account ----------------------------------------------- */
+/* select options for adding group to your account  ------------------------- */
 
 function createSelectOptions(groupsArr, output) {
   groupsArr.forEach((group) => {
@@ -118,10 +110,34 @@ function createSelectOptions(groupsArr, output) {
 async function getNotAssignedGroups(userToken) {
   try {
     const availableGrArr = await getFetch('groups', userToken);
-    console.log('availableGrArr: ', availableGrArr);
     createSelectOptions(availableGrArr, selectEl);
   } catch (err) {
     console.log('err in getGroups:', err);
   }
 }
 getNotAssignedGroups(token);
+
+/* add group to your account  ----------------------------------------------- */
+async function postAccounts(inputData) {
+  try {
+    const data = await postFetch('accounts', token, inputData);
+    if (data.success) {
+      formAddGr.reset();
+      handleErrors(data.message);
+      setTimeout(() => { window.location.reload(); }, 2000);
+    } else {
+      handleErrors(data.message);
+    }
+  } catch (err) {
+    console.log('error in postGroup: ', err);
+  }
+}
+
+formAddGr.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = {
+    groupId: selectEl.value,
+  };
+  clearErrors();
+  postAccounts(formData);
+});

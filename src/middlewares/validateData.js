@@ -17,11 +17,10 @@ async function validateUser(req, res, next) {
   });
   try {
     await userSchema.validateAsync(req.body, { abortEarly: false });
-    console.log('req.body: ', req.body);
     next();
   } catch (err) {
     // console.log('err in validateUser middleware:', err);
-    console.log('errDetails: ', err.details);
+    // console.log('errDetails: ', err.details);
     const message = err.details.map((errObj) => ({
       message: errObj.message,
       field: errObj.path[0],
@@ -40,11 +39,8 @@ async function validateBill(req, res, next) {
   });
   try {
     await billsSchema.validateAsync(req.body, { abortEarly: false });
-    console.log('req.body: ', req.body);
     next();
   } catch (err) {
-    // console.log('err in validateData middleware:', err);
-    console.log('errDetails: ', err.details);
     const message = err.details.map((errObj) => ({
       message: errObj.message,
       field: errObj.path[0],
@@ -61,11 +57,8 @@ async function validateGroup(req, res, next) {
   });
   try {
     await groupsSchema.validateAsync(req.body, { abortEarly: false });
-    console.log('req.body: ', req.body);
     next();
   } catch (err) {
-    // console.log('err in validateData middleware:', err);
-    console.log('errDetails: ', err.details);
     const message = err.details.map((errObj) => ({
       message: errObj.message,
       field: errObj.path[0],

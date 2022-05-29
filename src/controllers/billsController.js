@@ -15,7 +15,6 @@ async function postBills(req, res) {
   const { groupId, amount, description } = req.body;
   try {
     const insertResult = await postBillsDb(groupId, amount, description);
-    console.log('insertResult:', insertResult);
     if (insertResult.affectedRows === 1) {
       return res.status(201).json({ success: true, message: 'New bill successfully created.' });
     }

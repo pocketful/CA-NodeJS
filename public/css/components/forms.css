@@ -66,6 +66,7 @@ form input:focus {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
 }
 
@@ -79,8 +80,13 @@ form input:focus {
   text-align: center;
 }
 
-.btn-add {
+.btn-add,
+.err-common-add {
   margin-top: 0;
+}
+
+.err-common-add {
+  flex: 1 0 100%;
 }
 
 /* media queries ----------------------------------------------- */

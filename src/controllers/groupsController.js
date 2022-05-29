@@ -15,7 +15,6 @@ async function postGroups(req, res) {
   const { name } = req.body;
   try {
     const insertResult = await postGroupsDb(name);
-    console.log('insertResult:', insertResult);
     if (insertResult.affectedRows === 1) {
       return res.status(201).json({ success: true, message: 'New group successfully created.' });
     }

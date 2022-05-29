@@ -23,9 +23,9 @@ Content-Type: application/json
 }
 
 
-### Groups ===========================================================================================
+### Groups =========================================================================================== for groups.html
 GET http://localhost:3000/api/groups
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mzg0ODg2NSwiZXhwIjoxNjUzODUyNDY1fQ.BievofM1tdTd6i0ZfiuCk18s08nbGU-9pAKHf_mcKPg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mzg1OTkxOSwiZXhwIjoxNjUzODYzNTE5fQ.FW2zZSwtlS-vusxY3FUSVsGdkoFCQAx2EdQbmVx5b-8
 
 
 ### ----------------------------------
@@ -53,13 +53,13 @@ Content-Type: application/json
 }
 
 
-### Accounts =========================================================================================
+### Accounts ========================================================================================= for groups.html
 GET http://localhost:3000/api/accounts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgzNzM2NSwiZXhwIjoxNjUzODQwOTY1fQ.fXK9Kbj65XFcLvlWbroRBCqgRMW1nAHat7tdOhVyXnw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mzg1OTkxOSwiZXhwIjoxNjUzODYzNTE5fQ.FW2zZSwtlS-vusxY3FUSVsGdkoFCQAx2EdQbmVx5b-8
 
 
-### ----------------------------------
+### ---------------------------------- groups.html
 POST http://localhost:3000/api/accounts
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgzNzM2NSwiZXhwIjoxNjUzODQwOTY1fQ.fXK9Kbj65XFcLvlWbroRBCqgRMW1nAHat7tdOhVyXnw

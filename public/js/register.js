@@ -10,7 +10,6 @@ import {
 const form = document.forms[0];
 
 async function registerUser(inputData) {
-  console.log('inputData: ', inputData);
   try {
     const resp = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
@@ -19,19 +18,13 @@ async function registerUser(inputData) {
       },
       body: JSON.stringify(inputData),
     });
-    // console.log('response ===', resp);
     const data = await resp.json();
-    console.log('data: ', data);
     if (data.success) {
       form.reset();
-      console.log('registered successfully');
       handleErrors(data.message);
-      setTimeout(() => {
-        window.location.href = 'login.html';
-      }, 2000);
+      setTimeout(() => { window.location.href = 'login.html'; }, 2000);
     } else {
       handleErrors(data.message);
-      console.log('failed to register');
     }
   } catch (err) {
     console.log('error in register: ', err);
@@ -59,7 +52,6 @@ function fullnameFixed() {
     // capitalize the first letter of each word
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
-  // console.log('fullname: ', fullname);
   return fullname;
 }
 

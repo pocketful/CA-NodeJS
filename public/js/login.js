@@ -10,7 +10,6 @@ import {
 const form = document.forms[0];
 
 async function loginUser(inputData) {
-  console.log('inputData: ', inputData);
   try {
     const resp = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
@@ -19,21 +18,14 @@ async function loginUser(inputData) {
       },
       body: JSON.stringify(inputData),
     });
-    // console.log('response: ', resp);
     const data = await resp.json();
-    console.log('data: ', data);
     if (data.success) {
       form.reset();
-      console.log('successfully logged in');
       // save token to localStorage
       localStorage.setItem('userToken', data.token);
       handleErrors(data.message);
-      setTimeout(() => {
-        window.location.href = 'groups.html';
-        // window.location.replace('groups.html');
-      }, 2000);
+      window.location.replace('groups.html');
     } else {
-      console.log('failed to login');
       handleErrors(data.message);
     }
   } catch (err) {
@@ -57,9 +49,7 @@ form.addEventListener('submit', (event) => {
     email: form.email.value.trim(),
     password: form.password.value.trim(),
   };
-  console.log('formData: ', formData);
   clearErrors();
-
   // validate all inputs after form submit
   // eslint-disable-next-line no-restricted-syntax
   for (const key in formData) {

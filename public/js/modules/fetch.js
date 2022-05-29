@@ -7,7 +7,6 @@ export async function getFetch(endpoint, token) {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('resp: ', resp);
     return resp.json();
   } catch (err) {
     console.log('error in getFetch:', err);
@@ -25,7 +24,6 @@ export async function postFetch(endpoint, token, inputData) {
       },
       body: JSON.stringify(inputData),
     });
-    console.log('resp: ', resp);
     return resp.json();
   } catch (err) {
     console.log('error in postFetch:', err);

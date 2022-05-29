@@ -16,7 +16,6 @@ async function postAccounts(req, res) {
   const { userId } = req;
   try {
     const insertResult = await postAccountsDb(groupId, userId);
-    console.log('insertResult:', insertResult);
     if (insertResult.affectedRows === 1) {
       return res.status(201).json({ success: true, message: 'New group to your account was added successfully.' });
     }
