@@ -24,7 +24,15 @@ Content-Type: application/json
 
 ### Groups ---------------------------------
 GET http://localhost:3000/api/groups
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mzc1ODUzMywiZXhwIjoxNjUzNzYyMTMzfQ.sqsMn35brDGHqphuBgRIq3RyBi2sZU4xwuZPGIqmnHo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgxNDM3MCwiZXhwIjoxNjUzODE3OTcwfQ.9IFAxM7jn9E1aViENlBG-EMPxaf1T04Lu_-f0QrVOus
+
+###
+POST http://localhost:3000/api/groups
+Content-Type: application/json
+
+{
+  "name": "Polar Night in Norway"
+}
 
 ### Accounts -------------------------------
 GET http://localhost:3000/api/accounts
