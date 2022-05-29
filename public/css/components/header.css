@@ -1,0 +1,45 @@
+nav {
+  background-color: var(--dark2);
+  box-shadow: 2px 2px 8px var(--shadow);
+  display: flex;
+  justify-content: center;
+  gap: 8%;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.intro-section {
+  text-align: center;
+  padding-top: 2.5em;
+}
+
+.intro__logo {
+  max-width: 100px;
+  margin-bottom: 1em;
+}
+
+.intro__title {
+  font-size: 2rem;
+  color: var(--light);
+  margin-bottom: 0.3em;
+}
+
+.intro__subtitle {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+  margin-bottom: 3em;
+}
+
+/* smaller intro (groups, bills) -------------------------------- */
+.intro__logo-small {
+  max-width: 60px;
+  margin-bottom: 0.3em;
+}
+
+.intro__title-small {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--light);
+  margin-bottom: 2em;
+}

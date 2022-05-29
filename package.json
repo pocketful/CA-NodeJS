@@ -1,0 +1,36 @@
+{
+  "name": "ca-nodejs",
+  "version": "1.0.0",
+  "description": "Split Bill",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "lint": "eslint src/",
+    "lintfix": "eslint src/ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pocketful/CA-NodeJS.git"
+  },
+  "author": "Iv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pocketful/CA-NodeJS/issues"
+  },
+  "homepage": "https://github.com/pocketful/CA-NodeJS#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
