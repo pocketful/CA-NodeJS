@@ -79,8 +79,7 @@ form input:focus {
   text-align: center;
 }
 
-.btn-add,
-.err-common-add {
+.btn-add {
   margin-top: 0;
 }
 

@@ -95,6 +95,14 @@ function checkRef(value, field, valueR, fieldR) {
   return false;
 }
 
+function checkPositive(value, field) {
+  if (!value > 0) {
+    addErrToErrsArr('please enter a valid number', field);
+    return true;
+  }
+  return false;
+}
+
 export function checkInput(valueToCheck, field, rulesArr) {
   // eslint-disable-next-line no-restricted-syntax
   for (const rule of rulesArr) {
@@ -129,6 +137,11 @@ export function checkInput(valueToCheck, field, rulesArr) {
       const fieldRef = rule.split('-')[1];
       const valueRef = rule.split('-')[2];
       if (checkRef(valueToCheck, field, valueRef, fieldRef)) {
+        return;
+      }
+    }
+    if (rule === 'positive') {
+      if (checkPositive(valueToCheck, field)) {
         return;
       }
     }

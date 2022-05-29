@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
   "fullname": "Hermione Granger",
-  "email": "hermionegranger3@email.com",
+  "email": "hermionegranger@email.com",
   "password": "secret123",
   "passwordConfirm": "secret123"
 }
@@ -25,13 +25,13 @@ Content-Type: application/json
 
 ### Groups ===========================================================================================
 GET http://localhost:3000/api/groups
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgyMDAzOSwiZXhwIjoxNjUzODIzNjM5fQ.ROXMqgLWuUIjUboOADbyis2V-aqijHY7BHPpQ9gut7I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mzg0ODg2NSwiZXhwIjoxNjUzODUyNDY1fQ.BievofM1tdTd6i0ZfiuCk18s08nbGU-9pAKHf_mcKPg
 
 
 ### ----------------------------------
 POST http://localhost:3000/api/groups
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgyMDAzOSwiZXhwIjoxNjUzODIzNjM5fQ.ROXMqgLWuUIjUboOADbyis2V-aqijHY7BHPpQ9gut7I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM4LCJpYXQiOjE2NTM4MzcyMTUsImV4cCI6MTY1Mzg0MDgxNX0.robtsWuduHFWsVcCm8HThvf6DXBUhqH5zko9ArRC5bk
 
 {
   "name": "Polar Night in Norway"
@@ -39,10 +39,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 
 
 ### Bills ============================================================================================
-GET http://localhost:3000/api/bills
-
-
-### ----------------------------------
 GET http://localhost:3000/api/bills/2
 
 
@@ -59,12 +55,14 @@ Content-Type: application/json
 
 ### Accounts =========================================================================================
 GET http://localhost:3000/api/accounts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgzNzM2NSwiZXhwIjoxNjUzODQwOTY1fQ.fXK9Kbj65XFcLvlWbroRBCqgRMW1nAHat7tdOhVyXnw
 
 
 ### ----------------------------------
 POST http://localhost:3000/api/accounts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgyMDczNSwiZXhwIjoxNjUzODI0MzM1fQ.4VwtkrunAtxMTo2Hvww97EjpTZFbP2iDM4OEZeJCNfU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgzNzM2NSwiZXhwIjoxNjUzODQwOTY1fQ.fXK9Kbj65XFcLvlWbroRBCqgRMW1nAHat7tdOhVyXnw
 
 {
   "groupId": 4
