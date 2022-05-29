@@ -1,14 +1,4 @@
-const { getBillsDb, postBillsDb, getBillsByGroupIdDb } = require('../models/billsModel');
-
-async function getBills(req, res) {
-  try {
-    const bills = await getBillsDb();
-    return res.json(bills);
-  } catch (err) {
-    console.log('error in get bills controller:', err);
-    return res.status(500).json({ success: false, message: 'Something went wrong.' });
-  }
-}
+const { postBillsDb, getBillsByGroupIdDb } = require('../models/billsModel');
 
 async function getBillsByGroupId(req, res) {
   const { groupId } = req.params;
@@ -40,7 +30,6 @@ async function postBills(req, res) {
 }
 
 module.exports = {
-  getBills,
   getBillsByGroupId,
   postBills,
 };

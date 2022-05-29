@@ -8,23 +8,26 @@ const token = localStorage.getItem('userToken');
 console.log('token ===', token);
 
 if (!token) {
-  // if not logged in redirect to register, forbid back button
-  window.location.replace('register.html');
+  // if not logged in redirect to login, forbid back button
+  window.location.replace('login.html');
+}
+
+function createCard(groupObj) {
+  const articleEl = createEl('article', '', outputEl, 'grcard');
+  const firstPEl = createEl('p', 'ID: ', articleEl, 'grcard__id');
+  createEl('span', groupObj.id, firstPEl, 'grcard__id-span');
+  createEl('p', groupObj.name, articleEl, 'grcard__name');
+  outputEl.append(articleEl);
+  articleEl.addEventListener('click', () => {
+    window.location.href = `bills.html?groupId=${groupObj.id}`;
+  });
 }
 
 function renderGroups(arr, output) {
   const outputGrEl = output;
   outputGrEl.innerHTML = '';
   arr.forEach((groupObj) => {
-    const articleEl = document.createElement('article');
-    articleEl.classList.add('grcard');
-    const firstPEl = createEl('p', 'ID: ', articleEl, 'grcard__id');
-    console.log('firstPEl', firstPEl);
-    createEl('span', groupObj.id, firstPEl, 'grcard__id-span');
-    createEl('p', groupObj.name, articleEl, 'grcard__name');
-    outputGrEl.append(articleEl);
-
-    articleEl.addEventListener('click', () => window.location.href = 'bills.html');
+    createCard(groupObj);
   });
 }
 
