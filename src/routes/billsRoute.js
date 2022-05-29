@@ -1,8 +1,9 @@
 const express = require('express');
-const getBills = require('../controllers/billsController');
+const controller = require('../controllers/billsController');
 
 const billsRoute = express.Router();
 
-billsRoute.get('/bills', getBills);
+billsRoute.get('/bills', controller.getBills);
+billsRoute.post('/bills', controller.postBills);
 
 module.exports = billsRoute;

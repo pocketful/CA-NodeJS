@@ -1,7 +1,7 @@
 GET http://localhost:3000/
 
 
-### Register ---------------------------------
+### Register -------------------------------------------------------------------------
 POST http://localhost:3000/api/register
 Content-Type: application/json
 
@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 
-### Login ---------------------------------
+### Login -----------------------------------------------------------------------------
 POST http://localhost:3000/api/login
 Content-Type: application/json
 
@@ -22,21 +22,33 @@ Content-Type: application/json
   "password": "secret123"
 }
 
-### Groups ---------------------------------
+### Groups ----------------------------------------------------------------------------
 GET http://localhost:3000/api/groups
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgxNDM3MCwiZXhwIjoxNjUzODE3OTcwfQ.9IFAxM7jn9E1aViENlBG-EMPxaf1T04Lu_-f0QrVOus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgxNjUwNywiZXhwIjoxNjUzODIwMTA3fQ.71ToFDVf1eORNpBNN2nHjnQILyYg2-ix3kyVytM9OSE
+
 
 ###
 POST http://localhost:3000/api/groups
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzgxNjUwNywiZXhwIjoxNjUzODIwMTA3fQ.71ToFDVf1eORNpBNN2nHjnQILyYg2-ix3kyVytM9OSE
 
 {
   "name": "Polar Night in Norway"
 }
 
-### Accounts -------------------------------
+### Accounts ---------------------------------------------------------------------------
 GET http://localhost:3000/api/accounts
 
 
-### Bills ----------------------------------
+### Bills ------------------------------------------------------------------------------
 GET http://localhost:3000/api/bills
+
+###
+POST http://localhost:3000/api/bills
+Content-Type: application/json
+
+{
+  "groupId": 3,
+  "amount": 30.80,
+  "description": "Gym"
+}
