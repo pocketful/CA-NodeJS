@@ -17,6 +17,10 @@ async function validateToken(req, res, next) {
     const tokenPayload = await jwt.verify(tokenFromHeader, jwtSecret);
     console.log('tokenPayload ===', tokenPayload);
 
+    // pass userId as req to the next function
+    const { userId } = tokenPayload;
+    req.userId = userId;
+
     next();
   } catch (err) {
     console.log('err in validateToken middleware:', err);
