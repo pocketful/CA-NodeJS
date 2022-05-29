@@ -1,6 +1,7 @@
 import { getFetch } from './modules/fetch.js';
+import createEl from './modules/helpers.js';
 
-const tbodyEl = document.querySelector('tbody');
+const outputEl = document.querySelector('tbody');
 
 // bills only for logged in users
 const token = localStorage.getItem('userToken');
@@ -11,22 +12,16 @@ if (!token) {
   window.location.replace('register.html');
 }
 
-function createEl(el, text, output) {
-  const newEl = document.createElement(el);
-  newEl.textContent = text;
-  output.append(newEl);
-}
-
 function renderBills(arr, output) {
-  const outputEl = output;
-  outputEl.innerHTML = '';
+  const outputBillsEl = output;
+  outputBillsEl.innerHTML = '';
 
   arr.forEach((billObj) => {
     const trEl = document.createElement('tr');
     createEl('td', billObj.group_id, trEl);
     createEl('td', billObj.description, trEl);
     createEl('td', billObj.amount, trEl);
-    tbodyEl.append(trEl);
+    outputBillsEl.append(trEl);
   });
 }
 
@@ -34,7 +29,7 @@ async function getBills(userToken) {
   try {
     const billsArr = await getFetch('bills', userToken);
     console.log('billsArr ===', billsArr);
-    renderBills(billsArr, tbodyEl);
+    renderBills(billsArr, outputEl);
   } catch (err) {
     console.log('err in getBills:', err);
   }
