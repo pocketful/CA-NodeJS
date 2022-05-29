@@ -26,7 +26,10 @@ async function postBills(req, res) {
   try {
     const insertResult = await postBillsDb(groupId, amount, description);
     console.log('insertResult:', insertResult);
-    return res.status(201).json({ success: true, message: 'New bill successfully created.' });
+    if (insertResult.affectedRows === 1) {
+      return res.status(201).json({ success: true, message: 'New bill successfully created.' });
+    }
+    return res.status(400).json({ success: false, message: 'Failed to create new bill.' });
   } catch (err) {
     console.log('error in post bills controller:', err);
     if (err.errno === 1054) {

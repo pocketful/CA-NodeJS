@@ -8,7 +8,10 @@ async function registerUser(req, res) {
     const hashedPass = hashPassword(password);
     const insertResult = await registerUserDb(fullname, email, hashedPass);
     console.log('insertResult:', insertResult);
-    return res.status(201).json({ success: true, message: 'New user successfully created.' });
+    if (insertResult.affectedRows === 1) {
+      return res.status(201).json({ success: true, message: 'New user successfully created.' });
+    }
+    return res.status(400).json({ success: false, message: 'Failed to create new user' });
   } catch (err) {
     console.log('error in register controller:', err);
     if (err.errno === 1054) {

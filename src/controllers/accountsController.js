@@ -1,8 +1,9 @@
 const { getAccountsDb, postAccountsDb } = require('../models/accountsModel');
 
 async function getAccounts(req, res) {
+  const { userId } = req;
   try {
-    const accounts = await getAccountsDb();
+    const accounts = await getAccountsDb(userId);
     return res.json(accounts);
   } catch (err) {
     console.log('error in accounts controller:', err);
@@ -16,9 +17,10 @@ async function postAccounts(req, res) {
   try {
     const insertResult = await postAccountsDb(groupId, userId);
     console.log('insertResult:', insertResult);
-    return res
-      .status(201)
-      .json({ success: true, message: 'New group to your account was added successfully.' });
+    if (insertResult.affectedRows === 1) {
+      return res.status(201).json({ success: true, message: 'New group to your account was added successfully.' });
+    }
+    return res.status(400).json({ success: false, message: 'Failed to add new group to your account.' });
   } catch (err) {
     console.log('error in post accounts controller:', err);
     if (err.errno === 1054) {

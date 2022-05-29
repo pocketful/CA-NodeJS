@@ -1,12 +1,12 @@
 const mysql = require('mysql2/promise');
 const { dbConfig } = require('../config');
 
-async function getGroupsDb() {
+async function getNotAssignedGroupsDb(userId) {
   let conn;
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = 'SELECT * FROM groups';
-    const [groups] = await conn.execute(sql, []);
+    const sql = 'SELECT * FROM groups WHERE id NOT IN (SELECT groups.id FROM groups LEFT JOIN accounts ON groups.id = accounts.group_id WHERE accounts.user_id = ?)';
+    const [groups] = await conn.execute(sql, [userId]);
     return groups;
   } catch (err) {
     console.log('error in get groups model:', err);
@@ -32,6 +32,6 @@ async function postGroupsDb(name) {
 }
 
 module.exports = {
-  getGroupsDb,
+  getNotAssignedGroupsDb,
   postGroupsDb,
 };

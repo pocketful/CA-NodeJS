@@ -17,16 +17,16 @@ async function validateUser(req, res, next) {
   });
   try {
     await userSchema.validateAsync(req.body, { abortEarly: false });
-    console.log('req.body ==============', req.body);
+    console.log('req.body: ', req.body);
     next();
   } catch (err) {
     // console.log('err in validateUser middleware:', err);
-    console.log('errDetails ===', err.details);
+    console.log('errDetails: ', err.details);
     const message = err.details.map((errObj) => ({
       message: errObj.message,
       field: errObj.path[0],
     }));
-    console.log('details message ===', message);
+    console.log('details message: ', message);
     res.status(400).json({ success: false, message });
   }
 }

@@ -1,12 +1,12 @@
 const mysql = require('mysql2/promise');
 const { dbConfig } = require('../config');
 
-async function getAccountsDb() {
+async function getAccountsDb(userId) {
   let conn;
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = 'SELECT * FROM accounts';
-    const [accounts] = await conn.execute(sql, []);
+    const sql = 'SELECT groups.id, groups.name FROM accounts LEFT JOIN groups ON accounts.group_id = groups.id WHERE accounts.user_id = ?';
+    const [accounts] = await conn.execute(sql, [userId]);
     return accounts;
   } catch (err) {
     console.log('error in accounts model:', err);
