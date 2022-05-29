@@ -13,15 +13,15 @@ const form = document.forms[0];
 
 // bills only for logged in users
 const token = localStorage.getItem('userToken');
-console.log('token ===', token);
+console.log('token: ', token);
 
 if (!token) {
   // if not logged in redirect to login, forbid back button
   window.location.replace('login.html');
 }
 
-function createCard(billObj) {
-  const trEl = createEl('tr', '', outputEl);
+function createCard(billObj, output) {
+  const trEl = createEl('tr', '', output);
   createEl('td', billObj.group_id, trEl);
   createEl('td', billObj.description, trEl);
   createEl('td', billObj.amount, trEl);
@@ -31,7 +31,7 @@ function renderBills(arr, output) {
   const outputBillsEl = output;
   outputBillsEl.innerHTML = '';
   arr.forEach((billObj) => {
-    createCard(billObj);
+    createCard(billObj, output);
   });
 }
 
@@ -69,7 +69,7 @@ async function postBill(inputData) {
       },
       body: JSON.stringify(formData),
     });
-    // console.log('response ===', resp);
+    // console.log('response: ', resp);
     const data = await resp.json();
     console.log('data: ', data);
     if (data.success) {

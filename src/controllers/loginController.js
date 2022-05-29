@@ -7,7 +7,7 @@ async function loginUser(req, res) {
   try {
     // if user with this email exists
     const foundUser = await loginUserDb(emailInput);
-    console.log('user with this email ===', foundUser);
+    console.log('user with this email: ', foundUser);
     if (!foundUser) throw new Error(400);
 
     // if passwords match

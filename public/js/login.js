@@ -19,7 +19,7 @@ async function loginUser(inputData) {
       },
       body: JSON.stringify(inputData),
     });
-    // console.log('response ===', resp);
+    // console.log('response: ', resp);
     const data = await resp.json();
     console.log('data: ', data);
     if (data.success) {

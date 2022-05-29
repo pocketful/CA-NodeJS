@@ -3,7 +3,7 @@ const { jwtSecret } = require('../config');
 
 async function validateToken(req, res, next) {
   const tokenFromHeader = req.headers.authorization?.split(' ')[1];
-  console.log('tokenFromHeader ===', tokenFromHeader);
+  console.log('tokenFromHeader: ', tokenFromHeader);
 
   // if token doesn't exist
   if (!tokenFromHeader) {
@@ -15,7 +15,7 @@ async function validateToken(req, res, next) {
   // token exist
   try {
     const tokenPayload = await jwt.verify(tokenFromHeader, jwtSecret);
-    console.log('tokenPayload ===', tokenPayload);
+    console.log('tokenPayload: ', tokenPayload);
 
     // pass userId as req to the next function
     const { userId } = tokenPayload;
