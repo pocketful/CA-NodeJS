@@ -22,7 +22,13 @@ Content-Type: application/json
   "password": "secret123"
 }
 
-
 ### Groups ---------------------------------
 GET http://localhost:3000/api/groups
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MzY2NzgxNCwiZXhwIjoxNjUzNjcxNDE0fQ.8cJ1Vo5SfGPSqehD_AUyu_iVbWvN8lhxTfQ_J9ObK-I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mzc1ODUzMywiZXhwIjoxNjUzNzYyMTMzfQ.sqsMn35brDGHqphuBgRIq3RyBi2sZU4xwuZPGIqmnHo
+
+### Accounts -------------------------------
+GET http://localhost:3000/api/accounts
+
+
+### Bills ----------------------------------
+GET http://localhost:3000/api/bills
