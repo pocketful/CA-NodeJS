@@ -28,6 +28,9 @@
   background-color: var(--greygreen2);
   color: var(--yellow2);
 }
+.table-container td:last-child::before {
+  content: '$';
+}
 
 .table-container tr:nth-child(odd) {
   background-color: var(--dark3);
@@ -39,6 +42,7 @@
   background-color: var(--greygreen);
   color: var(--yellow3);
 }
+
 
 /* media queries ----------------------------------------------- */
 @media screen and (max-width: 600px) {
