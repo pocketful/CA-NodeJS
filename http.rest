@@ -52,3 +52,6 @@ Content-Type: application/json
   "amount": 30.80,
   "description": "Gym"
 }
+
+###
+GET http://localhost:3000/api/bills/2

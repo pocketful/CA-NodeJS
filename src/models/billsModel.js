@@ -16,6 +16,21 @@ async function getBillsDb() {
   }
 }
 
+async function getBillsByGroupIdDb(groupId) {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+    const sql = 'SELECT * FROM bills WHERE group_id = ?';
+    const [bills] = await conn.execute(sql, [groupId]);
+    return bills;
+  } catch (err) {
+    console.log('error in get bills model:', err);
+    throw err;
+  } finally {
+    conn?.end();
+  }
+}
+
 async function postBillsDb(groupId, amount, description) {
   let conn;
   try {
@@ -33,5 +48,6 @@ async function postBillsDb(groupId, amount, description) {
 
 module.exports = {
   getBillsDb,
+  getBillsByGroupIdDb,
   postBillsDb,
 };
