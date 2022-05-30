@@ -95,7 +95,7 @@ function checkRef(value, field, valueR, fieldR) {
 }
 
 function checkPositive(value, field) {
-  if (!value > 0) {
+  if (!(value > 0)) {
     addErrToErrsArr('please enter a valid number', field);
     return true;
   }

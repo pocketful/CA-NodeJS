@@ -34,7 +34,7 @@ async function validateBill(req, res, next) {
   const billsSchema = Joi.object({
     groupId: Joi.number().required(),
     amount: Joi.number().min(0).required(),
-    description: Joi.string().trim().min(5).max(255)
+    description: Joi.string().trim().min(5).max(60)
       .required(),
   });
   try {
@@ -52,7 +52,7 @@ async function validateBill(req, res, next) {
 
 async function validateGroup(req, res, next) {
   const groupsSchema = Joi.object({
-    name: Joi.string().trim().min(5).max(255)
+    name: Joi.string().trim().min(5).max(50)
       .required(),
   });
   try {

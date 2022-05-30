@@ -21,7 +21,7 @@ if (!token) {
 
 function createCard(billObj, output) {
   const trEl = createEl('tr', '', output);
-  createEl('td', billObj.group_id, trEl);
+  createEl('td', billObj.id, trEl);
   createEl('td', billObj.description, trEl);
   createEl('td', billObj.amount, trEl);
 }
@@ -29,9 +29,7 @@ function createCard(billObj, output) {
 function renderBills(arr, output) {
   const outputBillsEl = output;
   outputBillsEl.innerHTML = '';
-  arr.forEach((billObj) => {
-    createCard(billObj, output);
-  });
+  arr.forEach((billObj) => createCard(billObj, output));
 }
 
 function getQueryParam(param) {
@@ -69,8 +67,7 @@ async function postBill(inputData) {
     const data = await resp.json();
     if (data.success) {
       form.reset();
-      handleErrors(data.message);
-      setTimeout(() => { window.location.reload(); }, 2000);
+      window.location.reload();
     } else {
       handleErrors(data.message);
     }
@@ -82,8 +79,8 @@ async function postBill(inputData) {
 // validation rules for inputs
 function getRules() {
   const rules = {
-    amount: ['required', 'positive', 'maxLength-255'],
-    description: ['required', 'minLength-5', 'maxLength-255'],
+    amount: ['required', 'positive'],
+    description: ['required', 'minLength-5', 'maxLength-60'],
   };
   return rules;
 }

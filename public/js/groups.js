@@ -56,9 +56,10 @@ async function postGroup(inputData) {
   try {
     const data = await postFetch('groups', token, inputData);
     if (data.success) {
-      formCreateGr.reset();
-      handleErrors(data.message);
-      setTimeout(() => { window.location.reload(); }, 2000);
+      // formCreateGr.reset();
+      window.location.reload();
+      // handleErrors(data.message);
+      // setTimeout(() => { window.location.reload(); }, 2000);
     } else {
       handleErrors(data.message);
     }
@@ -70,7 +71,7 @@ async function postGroup(inputData) {
 // validation rules for inputs
 function getRules() {
   const rules = {
-    name: ['required', 'minLength-5', 'maxLength-255'],
+    name: ['required', 'minLength-5', 'maxLength-50'],
   };
   return rules;
 }
@@ -122,9 +123,10 @@ async function postAccounts(inputData) {
   try {
     const data = await postFetch('accounts', token, inputData);
     if (data.success) {
-      formAddGr.reset();
-      handleErrors(data.message);
-      setTimeout(() => { window.location.reload(); }, 2000);
+      // formAddGr.reset();
+      window.location.reload();
+      // handleErrors(data.message);
+      // setTimeout(() => { window.location.reload(); }, 2000);
     } else {
       handleErrors(data.message);
     }

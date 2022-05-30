@@ -20,10 +20,10 @@ async function loginUser(inputData) {
     });
     const data = await resp.json();
     if (data.success) {
-      form.reset();
+      // form.reset();
       // save token to localStorage
       localStorage.setItem('userToken', data.token);
-      handleErrors(data.message);
+      // handleErrors(data.message);
       window.location.replace('groups.html');
     } else {
       handleErrors(data.message);

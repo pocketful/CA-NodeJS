@@ -4,7 +4,7 @@ import {
   clearErrors,
   errorsFeArr,
   handleErrors,
-  handleErrorsWhileTyping,
+  // handleErrorsWhileTyping,
 } from './modules/validation.js';
 
 const form = document.forms[0];
@@ -89,4 +89,4 @@ form.addEventListener('submit', (event) => {
 });
 
 // validate inputs while typing
-handleErrorsWhileTyping(getRules());
+// handleErrorsWhileTyping(getRules());
