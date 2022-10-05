@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Split Bill</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/groups.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="nav-link" href="./register.html">Register</a>
+            <a class="nav-link" href="./login.html">Login</a>
+            <a class="nav-link active" href="./groups.html">Groups</a>
+            <!-- <a class="nav-link" href="./bills.html">Bills</a> -->
+        </nav>
+        <section class="intro-section">
+            <img class="intro__logo-small" src="assets/logo.png" alt="logo" />
+            <h1 class="intro__title-small">Split Bill</h1>
+        </section>
+    </header>
+    <main class="container">
+
+        <section class="groups">
+            <h3 class="groups__title">Select Your Group</h3>
+            <div class="groups__cards">
+                <!-- Generate cards -->
+                <!-- <article class="grcard">
+                    <p class="grcard__id">ID: <span class="grcard__id-span">1</span></p>
+                    <p class="grcard__name">Trip To Spain</p>
+                </article> -->
+            </div>
+        </section>
+
+        <section class="forms-section">
+
+            <div class="form__add form-container">
+                <p class="formadd__title">Add group to your account</p>
+                <form id="formAddGroup">
+                    <div class="addgroup__id">
+                        <label for="addgroupSelect">Group:</label>
+                        <select id="addgroupSelect">
+                            <!-- Generate select inputs -->
+                            <!-- <option value="1">Trip To Spain</option>
+                            <option value="2">Trip To Alps</option> -->
+                        </select>
+                    </div>
+                    <button class="btn" type="submit">Add</button>
+                </form>
+            </div>
+
+            <div class="form__create form-container">
+                <p class="formadd__title">Create new group for a trip</p>
+                <form id="formCreateGroup">
+                    <div class="create__group">
+                        <label for="grname">New group name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter new group name">
+                        <span class="name-err err"></span>
+                    </div>
+                    <button class="btn" type="submit">Create</button>
+                </form>
+            </div>
+            <div class="err-common err-common-add"></div>
+        </section>
+    </main>
+</body>
+
+</html>

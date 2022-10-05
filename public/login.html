@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Split Bill</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/login.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="nav-link" href="./register.html">Register</a>
+            <a class="nav-link active" href="./login.html">Login</a>
+            <a class="nav-link" href="./groups.html">Groups</a>
+            <!-- <a class="nav-link" href="./bills.html">Bills</a> -->
+        </nav>
+        <section class="intro-section">
+            <img class="intro__logo" src="assets/logo.png" alt="logo" />
+            <h1 class="intro__title">Split Bill</h1>
+            <p class="intro__subtitle">Best in market</p>
+        </section>
+    </header>
+    <main class="container">
+        <section class="form-container">
+            <h2 class="form__title">Login</h2>
+
+            <form id="formLogin">
+                <div class="login__email">
+                    <label for="email">Email<span class="req-star"> *</span></label>
+                    <input type="text" id="email" name="email" placeholder="Enter your email">
+                    <span class="email-err err"></span>
+                </div>
+
+                <div class="login__password">
+                    <label for="password">Password<span class="req-star"> *</span></label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                    <span class="password-err err"></span>
+                </div>
+
+                <div class="err-common login-err"></div>
+                <button class="btn" type="submit">Login</button>
+                <a class="link" href="./register.html">Don't have an account? Register</a>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright &copy;2022 Split Bill</p>
+    </footer>
+</body>
+</html>
